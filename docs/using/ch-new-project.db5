@@ -1,0 +1,215 @@
+<?xml version='1.0'?>
+
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0"
+	 xmlns:xi="http://www.w3.org/2001/XInclude"
+	 xmlns:xl="http://www.w3.org/1999/xlink" >
+
+
+  <title>New Project</title>
+
+  <section>
+    <title>SECTION TITLE</title>
+
+    <para>
+      TEXT
+    </para>
+
+  </section>
+
+  <section>
+    <title>Overview</title>
+
+    <itemizedlist>
+
+      <listitem>
+	<para>
+	  Create AWS Account
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Create “Global” Artifacts
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  Create Project Directories
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  CF for Pre-Network
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  CF for Network and Security Layer
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  CF for Management
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+	  CF for Application and Services Layer
+	</para>
+      </listitem>
+
+      <listitem>
+	<para>
+
+	</para>
+      </listitem>
+
+    </itemizedlist>
+
+  </section>
+
+
+  <section>
+    <title>Detailed ...</title>
+
+    <para>
+      TEXT
+    </para>
+
+
+    <section>
+      <title>
+	Create AWS Account
+      </title>
+
+      <orderedlist>
+
+	<listitem>
+	  <para>
+	    Create AWS Account
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Link to Consolidated Billing
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Request typical limit increases
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+
+	  </para>
+	</listitem>
+
+      </orderedlist>
+
+    </section>
+
+    <section>
+      <title>
+	Create “Global” Artifacts
+      </title>
+
+      <orderedlist>
+
+	<listitem>
+	  <para>
+
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+
+	  </para>
+	</listitem>
+
+      </orderedlist>
+
+    </section>
+
+    <section>
+      <title>
+	Create Project Directories
+      </title>
+
+      <para>
+	TEXT
+      </para>
+
+    </section>
+
+    <section>
+      <title>
+	CF for Pre-Network
+      </title>
+
+      <para>
+	TEXT
+      </para>
+
+    </section>
+
+    <section>
+      <title>
+	CF for Network and Security Layer
+      </title>
+
+      <para>
+	TEXT
+      </para>
+
+    </section>
+
+    <section>
+      <title>
+	CF for Management
+      </title>
+      <para>
+	TEXT
+      </para>
+
+    </section>
+
+    <section>
+      <title>
+	CF for Application and Services Layer
+      </title>
+
+      <para>
+	TEXT
+      </para>
+
+    </section>
+
+
+  </section>
+
+
+
+
+</chapter>

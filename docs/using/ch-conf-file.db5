@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<chapter version="5.0"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <title>
+    Configuration File
+  </title>
+
+  <para>
+
+  </para>
+
+
+  <section>
+    <title>Overview</title>
+
+    <para>
+    </para>
+
+    <para>
+      It is just a list of shell variables that gets “executed” and
+      passed into the templates being created by
+      <application>CloudFormation</application>.
+    </para>
+
+  </section>
+
+
+  <section>
+    <title>Organization of the configuration file</title>
+
+    <para>
+      The format is loosely based on a standard “,ini” file, with a
+      series of section that are named within squalr brackets.  Each
+      sections contains a list of variable assignments which become
+      parameters to the provisioning tool itself and/or the templates
+      being instantiated.
+    </para>
+
+    <para>
+      comments.
+    </para>
+
+    <warning>
+      <para>
+	The <filename>.conf</filename> is processed as if it were a
+	shell include.  I simple mistake in this file like mismatched
+	quotes or even a bad comment can confused
+	<command>provision_aws</command> and cause it to fail with
+	strange errors.
+      </para>
+    </warning>
+
+  </section>
+
+
+  <section>
+    <title>Configuration Sections</title>
+
+    <para>
+      The first section should be <literal>[default]</literal>.
+      Parameters defined here will be read first and available on a
+      provisioning run for a specific section.
+    </para>
+
+
+    <para>
+      It is typical to define <varname>CF_PROJECT</varname>,
+      <varname>project</varname>, and <varname>AWS_REGION</varname> in
+      the <literal>[default]</literal> section.
+    </para>
+
+
+    <section>
+      <title>Parameters</title>
+
+
+      <para>
+	A parameters is essentially a shell variable that will be
+	passed to a template when it is instantiated.
+      </para>
+
+
+      <para>
+	It may be specified as a constant or a lookup.  It a parameter
+	is left unspecified in the conf file, its value in the cf
+	template will be that tempalte's default.
+      </para>
+
+
+      <section>
+	<title>Required Parameters</title>
+
+
+	<para>
+	  Some parameters <emphasis>must</emphasis> be specified in
+	  the <filename>.conf</filename> file.
+	</para>
+
+
+	<variablelist>
+
+	  <varlistentry>
+	    <term><varname>AWS_PROFILE</varname></term>
+	    <listitem>
+	      <para>
+		Every section must define this parameter.  It is the
+		name of a section in the configuration file for the
+		<application>>awscli</application> tool.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>CF_PROJECT</varname></term>
+	    <listitem>
+	      <para>
+		The value of the this parameter is used the
+		provisioning script to generate the name of the
+		private bucket.  This is required because the
+		provisioning script needs to write the template and
+		parameters files to the private bucket. This variable
+		is typically defined in the
+		<literal>[default]</literal> section.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	</variablelist>
+
+
+      </section>
+
+      <section>
+	<title>Special Parameters</title>
+
+	<para>
+	  In addition to the required variable, some parameters have
+	  a special meaning to the provision script and are used
+	  internally. The following variables  ..
+	</para>
+
+	<variablelist>
+
+	  <varlistentry>
+	    <term><varname>AWS_REGION</varname></term>
+	    <listitem>
+	      <para>
+		If defined, this will be passed to the
+		<command>aws</command> calls in within the provisioning
+		script.  It was meant as away to override the default
+		which is usually set in the configuration file for the
+		<application>awscli</application>.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+
+	  <varlistentry>
+	    <term><varname>AZ1</varname> and <varname>AZ2</varname></term>
+	    <listitem>
+	      <para>
+		These two variables are defined by the provision script
+		itself.  They resolve to the first two availability
+		zones for the account and region.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>VpcId</varname></term>
+	    <listitem>
+	      <para>
+		This parameter must be set to the id of the VPC if the
+		<filename>.conf</filename> provisions host arrays. It
+		can be set to a constant value, or resolved via a stack
+		lookup.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname><replaceable>stack</replaceable>_CF_PARAM_SUBNETS</varname></term>
+	    <listitem>
+	      <para>
+		This parameter may be used when generating a host
+		array.  It should contain a list of AWS subnet ids
+		(sg-<replaceable>########</replaceable>).  When each
+		host is being generated in the array from its
+		template, the <varname>Subnet</varname> of the
+		template will be set to one the values in the subnets
+		list.  This feature allows a template with a single
+		host definition to be able to spread multiple
+		instances across a range of subnets.
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	</variablelist>
+
+      </section>
+
+      <section>
+	<title>Common Parameters</title>
+
+	<para>
+	  The following variables are commonly used.  many are
+	  essentially mandatory based on the current
+	  <application>CloudFormation</application> framework currently
+	  in place.
+	</para>
+
+	<variablelist>
+
+	  <varlistentry>
+	    <term><varname>Domain</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>Environment</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>MaxProvisionTime</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>AppInstanceProfile</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>Keypair</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>PublicBucketName</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>PrivateBucketName</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>ChefEnv</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>ChefServerURL</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>ChefProxyURL</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>ChefRoles</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>NodeName</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>NodeIndex</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>AppInstanceType</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>RootDiskSize</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>OptDiskSize</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>Subnet</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	  <varlistentry>
+	    <term><varname>OpsAlert</varname></term>
+	    <listitem>
+	      <para>
+		DESCRIPTION
+	      </para>
+	    </listitem>
+	  </varlistentry>
+
+	</variablelist>
+
+      </section>
+
+
+    </section>
+
+  </section>
+
+</chapter>

@@ -1,0 +1,30 @@
+
+I have just committed, tagged, and pushed version 0.3.5 of the provision-aws tool set.
+
+provision_aws is a bash script that can launch a series of CloudFormation stacks as directed by a configuration file.  It provides a mechanism where parameters can be passed to individual stacks or globally to all stacks.  Stack parameters can be constant or fetched from previously launched stacks. A companion script, provision_aws_status, can be used to inspect the configuration file to display which stacks are enabled and/or disabled.
+
+
+Changes in this release
+-----------------------
+
+Some specific changes in this release include ...
+
+  * The ability to not wait for a some stacks to finish.
+
+The _STACK_WAIT setting
+-----------------------
+
+A stanza in the conf file may now specify a "WAIT" setting, for example, WEB_SERVER_STACK_WAIT=false.  This setting can be used on stacks which build "stack arrays". It can be set to true (default) or false.
+
+The default is true, which is the current behavior.  Provision_aws will wait for all the stacks created by the stanza to finish before moving on to the next stanza.  If it is set to false, after the processes are spawned to create each server, provision_aws will not wait for them all to finish but will proceed to the next stanza in the conf file immediately.
+
+The new -w option to prevision_aws can set the default to true or false for all stacks.
+
+**WARNING**  Use with care.
+
+If too many processes are spawned by provision_aws, AWS will start to throttle the requests by dropping them.
+
+Documentation
+-------------
+
+Please refer to the README and Confluence for more documentation.

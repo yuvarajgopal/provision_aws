@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+
+<book	xmlns="http://docbook.org/ns/docbook"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		xmlns:xi="http://www.w3.org/2001/XInclude">
+
+
+  <info>
+    <title>Using the AWS Provisioning Script</title>
+    <subtitle></subtitle>
+    <titleabbrev></titleabbrev>
+    <author>
+      <personname>
+	<firstname>Stephen</firstname>
+	<surname>Corbesero</surname>
+      </personname>
+      <affiliation>
+        <orgname>Synchronoss Technologies, Inc.</orgname>
+      </affiliation>
+      <email>stephen.corbesero@synchrnonoss.com</email>
+    </author>
+    <pubdate>August 2014</pubdate>
+    <releaseinfo role="version">1.0</releaseinfo>
+    <copyright>
+      <year>2014</year>
+      <holder>Synchronoss Technologies, Inc.</holder>
+    </copyright>
+  </info>
+
+  <toc/>
+
+  <xi:include href="ch-intro.db5"/>
+  <xi:include href="ch-conf-file.db5"/>
+  <xi:include href="ch-new-project.db5"/>
+
+  <xi:include href="ap-resources.db5"/>
+
+</book>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<chapter version="5.0"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <title>
+    Introduction
+  </title>
+
+  <para>
+    This document describe the usage and operation of the
+    <filename>provision_aws</filename> tool.  .
+  </para>
+
+
+  <para>
+    The <application>provision_aws</application> tool using a
+    configuration to instantiate one or more
+    <application>CloudFormation</application> templates in sequence.
+  </para>
+
+  <para>
+    In addition, it will typically be used to inject parameter values
+    to be used during the template creation.  The values for these
+    parameters can be constants in the <filename>.conf</filename>
+    file, or they can be extracted from a previously instantiated (and
+    still existing) stack.
+  </para>
+
+
+  <para>
+    Templates can be instantiated either as a single occurrence or as
+    an array.
+  </para>
+
+  <section>
+    <title>Terms</title>
+
+    <variablelist>
+
+      <varlistentry>
+	<term><application>CloudFormation</application></term>
+	<listitem>
+	  <para>
+	    DESCRIPTION
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Template, or <application>CloudFormation</application>
+	Template</term>
+	<listitem>
+	  <para>
+	    DESCRIPTION
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Javascript Object Notation (<acronym>JSON</acronym></term>
+	<listitem>
+	  <para>
+	    DESCRIPTION
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>Parameter</term>
+	<listitem>
+	  <para>
+	    DESCRIPTION
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>TERM</term>
+	<listitem>
+	  <para>
+	    DESCRIPTION
+	  </para>
+	</listitem>
+      </varlistentry>
+
+      <varlistentry>
+	<term>TERM</term>
+	<listitem>
+	  <para>
+	    DESCRIPTION
+	  </para>
+	</listitem>
+      </varlistentry>
+
+    </variablelist>
+
+
+
+  </section>
+
+
+</chapter>
